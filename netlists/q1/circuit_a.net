@@ -1,0 +1,15 @@
+* Circuit A - Paralell Clipper Simulation Netlist
+* Course: Circuitos Eletrônicos I - T3
+
+* 1. Voltage sources
+Vinput v_in 0 DC 0V
+
+* 2. Components
+R1 v_in out 1k
+D1 0 out Dmod
+D2 out 0 Dmod
+
+* 3. Diode Model Definitions (approx. 0.7V forward drop)
+.model Dmod D(IS=1e-12 N=1.2)
+
+.end

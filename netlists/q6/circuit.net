@@ -1,0 +1,10 @@
+* Exercício 6 - Sensor de Temperatura Semicondutor
+* Disciplina: Circuitos Eletrônica I - T3
+
+I1 0 n1 2m
+I2 0 n2 1m
+D1 n1 0 Dmod
+D2 n2 0 Dmod
+
+.model Dmod D(IS=1e-14 N=1.0)
+.end

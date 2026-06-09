@@ -1,0 +1,15 @@
+* Exercício 5.b Protetor Zener (Modelo Nativo)
+* Disciplina: Circuitos Eletrônica I - T3
+
+* Entrada senoidal 
+V1 vi 0 sin(0 10 60)
+
+R1 vi vo 1k
+
+* Dois Zeners em série e opostos conectados diretamente entre a saída e o GND
+D1 vo 1 Zmod
+D2 0 1 Zmod
+
+* Parâmetros: BV = Tensão Zener (4.3V), IBV = Corrente de joelho (1mA)
+.model Zmod D(IS=1e-12 N=1.15 BV=4.3 IBV=1m)
+.end

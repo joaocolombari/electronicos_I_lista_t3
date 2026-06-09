@@ -1,0 +1,23 @@
+* Exercício 7 - Retificador e Regulador Zener
+* Disciplina: Circuitos Eletrônica I - T3
+
+* Entrada senoidal 
+V1 vi 2 sin(0 4 60)
+
+* Ponte de retificação
+D1 vi vo Dmod
+D2 0 vi Dmod
+D3 2 vo Dmod
+D4 0 2 Dmod
+
+* Filtro Capacitivo (Nó vo)
+C1 vo 0 470u
+
+* Regulador Zener (Resistor e Diodo Zener)
+R1 vo vs 100
+D_Zener 0 vs Zmod
+
+.model Dmod D(IS=1e-12 N=1.15)
+* Modelo Zener regulando em ~2.0V para ficar abaixo dos 2.6V de pico do capacitor
+.model Zmod D(IS=1e-12 N=1.15 BV=2.0 IBV=1m)
+.end

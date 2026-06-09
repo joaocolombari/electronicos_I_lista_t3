@@ -1,0 +1,17 @@
+* Exercício 5.d AmpOp com Zener
+* Disciplina: Circuitos Eletrônica I - T3
+
+* Entrada senoidal 
+V1 vi 0 sin(0 10 60)
+
+R1 vi n_inv 1k
+
+* Diodo Zener na realimentação conectado entre o nó inversor e a saída
+D1 n_inv vo Zmod
+
+* Modelo idealizado de AmpOp (VCVS com ganho de 1Meg)
+EOp vo 0 0 n_inv 1Meg
+
+* Parâmetros do Zener: BV = 4.3V (Inversa), a condução direta padrão já entrega ~0.7V
+.model Zmod D(IS=1e-12 N=1.15 BV=4.3 IBV=1m)
+.end

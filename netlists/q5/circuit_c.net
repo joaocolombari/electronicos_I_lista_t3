@@ -1,0 +1,14 @@
+* Exercício 5.c - Retificador full-bridge
+* Disciplina: Circuitos Eletrônica I - T3
+
+* Entrada senoidal 
+V1 vi 2 sin(0 10 60)
+
+D1 vi vo Dmod
+D2 0 vi Dmod
+D3 2 vo Dmod
+D4 0 2 Dmod
+R1 vo 0 1k
+
+.model Dmod D(IS=1e-12 N=1.15)
+.end

@@ -1,0 +1,26 @@
+* Exercício 2.b - Análise de Ponto de Operação DC
+* Disciplina: Circuitos Eletrônica I - T3
+
+* Fontes de Alimentação
+V1 v1_source 0 DC 10V
+V2 v2_source 0 DC 15V
+
+* Resistores (Divisores de Tensão)
+R_top_left  v1_source no_esquerdo 10k
+R_bot_left  no_esquerdo 0 10k
+R_top_right v2_source no_direito 10k
+R_bot_right no_direito 0 10k
+
+* Diodo Horizontal (Anodo no nó direito, Catodo no nó esquerdo)
+
+* Corrente de teste
+VPROBE_D no_direito nd_h 0V
+
+* Diodo horizontal
+Dhorizontal nd_h no_esquerdo Dmod2
+
+* Modelo do Diodo para Condução em ~0.6V
+.model Dmod2 D(IS=1e-12 N=1.25)
+
+.op
+.end

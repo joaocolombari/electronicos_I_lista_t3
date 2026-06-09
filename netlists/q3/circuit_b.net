@@ -1,0 +1,22 @@
+* Exercício 3.b - Limitador Polarizado Assimétrico
+* Disciplina: Circuitos Eletrônica I - T3
+
+Vi vi 0 DC 0
+Rin vi vo 5k
+
+* Ramo da Esquerda: Diodo para baixo + Bateria 5V + Resistor 15k
+D1 vo nd1 Dmod
+Vb1 nd1 nr1 DC 5V
+R1 nr1 0 15k
+
+* Ramo da Direita: Diodo para cima + Bateria 6V + Resistor 10k
+D2 nd2 vo Dmod
+Vb2 nr2 nd2 DC 6V
+R2 nr2 0 10k
+
+.model Dmod D(IS=1e-12 N=1.25)
+
+* Varredura ampla para capturar as três inclinações do gráfico
+.dc Vi -10 15 0.05
+.print dc v(vo) v(vi)
+.end

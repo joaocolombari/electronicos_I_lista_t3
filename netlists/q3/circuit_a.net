@@ -1,0 +1,21 @@
+* Exercício 3.a - Circuito Grampeador (Clamper)
+* Disciplina: Circuitos Eletrônica I - T3
+
+* Entrada senoidal de 15V de pico para garantir o disparo
+Vi vi 0 SIN(0 30 60)
+C1 vi vo 1u  
+
+*Rload vi vi2 100k
+*C1 vi2 vo 1u  
+
+* Diodo aponta para cima conectado à fonte de 10V
+D1 n1 vo Dmod
+Vb n1 0 DC 10V
+
+* Modelo do Diodo para Condução em ~0.7V
+.model Dmod D(IS=1e-12 N=1.2)
+
+* Análise no tempo por 3 ciclos (60Hz -> ~50ms)
+.tran 0.1m 50m
+.print tran v(vo) v(vi)
+.end

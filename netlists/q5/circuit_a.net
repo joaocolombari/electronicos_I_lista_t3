@@ -1,0 +1,15 @@
+* Exercício 5.a - Clamping
+* Disciplina: Circuitos Eletrônica I - T3
+
+* Fontes de Alimentação
+V2 vdd 0 5
+
+* Entrada senoidal 
+V1 vi 0 sin(0 10 60)
+
+R1 vi vo 1k
+D1 0 vo Dmod
+D2 vo vdd Dmod
+
+.model Dmod D(IS=1e-12 N=1.15)
+.end
