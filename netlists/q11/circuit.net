@@ -1,0 +1,17 @@
+* Exercício 11 - Retificador Full Bridge com trafo equivalente (Versão Robusta)
+* Disciplina: Circuitos Eletrônica I - T3
+
+* Não usei o trafo aqui, mas no arquivo do LTSpice tem, pra quem quiser ver
+
+V_secundario N005 N001 SINE(0 16.9 60)
+
+C2 N003 0 1500u
+R1 N003 0 100
+
+D3 0 N001 Dmod
+D4 0 N005 Dmod
+D5 N005 N003 Dmod
+D6 N001 N003 Dmod
+
+.model Dmod D(IS=1e-12 N=1.05)
+.end

@@ -1,0 +1,40 @@
+* Exercício 8 - Retificador de Precisão com Filtro de Isolamento (AmpOp Ideal Direto)
+* Disciplina: Circuitos Eletrônica I - T3
+
+* Fontes de Alimentação (Mantidas para consistência, embora o E ideal use o GND)
+V2 vdd 0 10
+V3 vss 0 -10
+
+* Entrada senoidal (v_in para evitar palavra reservada)
+V1 v_in 0 sin(0 4 60)
+
+* --- ESTÁGIO 1: RETIFICADOR MEIA-ONDA ATIVO ---
+R1 v_in N003 10k
+R2 N004 N003 10k
+D1 N004 N007 Dmod
+D2 N007 N003 Dmod
+
+* AmpOp 1 Ideal: Saída=N007, ref=0, In(+)=0, In(-)=N003, Ganho=1Meg
+E1 N007 0 0 N003 1Meg
+
+* --- ESTÁGIO 2: SOMADOR INVERSOR ONDA COMPLETA ---
+R4 N004 N001 5k
+R5 v_in N001 10k
+R6 N001 N002 10k
+
+* AmpOp 2 Ideal: Saída=N002, ref=0, In(+)=0, In(-)=N001, Ganho=1Meg
+E2 N002 0 0 N001 1Meg
+
+* --- DIODO DE ISOLAMENTO --- 
+* testar sem para ver o que da!!
+D8 N002 N005 Dmod
+
+* --- ESTÁGIO 3: FILTRO C E REGULADOR ZENER ---
+C2 N005 0 470u
+R7 N005 N006 100
+D12 0 N006 Zmod
+
+* Modelos de Diodos
+.model Dmod D(IS=1e-12 N=1.2)
+.model Zmod D(IS=1e-12 N=1.15 BV=2 IBV=1m)
+.end

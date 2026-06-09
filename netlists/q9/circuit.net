@@ -1,0 +1,40 @@
+* Exercício 9 - Retificador Center-Tapped com Zener 6.3V
+* Disciplina: Circuitos Eletrônica I - T3
+
+* Fonte de Tensão
+V1 N004 N005 SINE(0 20 60)
+
+* Resistor de série isolado inserido de forma explícita na malha do primário
+R_serie_prim N005 Nserie 1
+
+* Resistor de altíssimo valor apenas para dar referência de GND ao primário (Evita erro de matriz)
+R_gnd_ref N004 0 1G
+
+* Filtro Capacitivo
+C2 N002 0 470u
+
+* Regulador Zener e Resistor de Entrada (R7)
+R7 N002 N003 100
+D12 0 N003 Zmod
+
+* Carga de alta impedância (R1) para simular o circuito aberto / medição de Vo
+R1 0 N003 1Meg
+
+* Transformador com Center-Tap (L1 e L2 no secundário, L3 no primário conectado ao resistor de série)
+L1 N006 0 1
+L2 0 N001 1
+L3 Nserie N004 4
+
+* Diretivas de Acoplamento Mútuo (Formato padrão SPICE)
+K1 L1 L2 1
+K2 L2 L3 1
+K3 L1 L3 1
+
+* Diodos do Retificador
+D1 N001 N002 Dmod
+D2 N006 N002 Dmod
+
+* Modelos de Semicondutores
+.model Dmod D(IS=1e-12 N=1.2)
+.model Zmod D(IS=1e-12 N=1.15 BV=6.3 IBV=1m)
+.end

@@ -1,0 +1,21 @@
+* Exercício 10.b - Limitador Ativo com Zener na Realimentação
+* Disciplina: Circuitos Eletrônica I - T3
+
+* Fonte de Tensão
+V_in vi 0 sin(0 6 60)
+
+* Resistores do circuito inversor (ganho unitário)
+R1 vi n_inv 10k
+R2 n_inv vo 10k
+
+* Diodo Zener conectado na malha de realimentação
+* Anodo no terra virtual (n_inv) e Catodo na saída (vo)
+DZ n_inv vo Zmod
+
+* Modelo do Amplificador Operacional Ideal como Fonte Dependente (E)
+E_op vo 0 0 n_inv 1Meg
+
+* Modelagem do Zener conforme parâmetros do enunciado:
+* Queda direta = 0.7V, Queda Reversa (BV) = 4.3V
+.model Zmod D(IS=1e-12 N=1.15 BV=4.3 IBV=1m)
+.end
